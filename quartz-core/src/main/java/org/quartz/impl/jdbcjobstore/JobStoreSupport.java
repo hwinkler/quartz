@@ -1005,9 +1005,26 @@ public abstract class JobStoreSupport implements JobStore, Constants {
                 misfireTime -= getMisfireThreshold();
             }
 
-            if (trig.getNextFireTime().getTime() > misfireTime) {
-                return false;
+            
+            // The following works around a NPE 
+            if ( trig != null){
+              Date nextFireTime = trig.getNextFireTime();
+              if ( nextFireTime != null){
+                if (nextFireTime.getTime() > misfireTime){
+                  return false;
+                }
+              } else {
+                getLog().error("nextFireTime is null");
+                return false;  // as if no misfire occurred
+              }
+            } else {
+              getLog().error("trig is null");
+              return false; // as if no misfire occurred
             }
+            // was:
+            // if (trig.getNextFireTime().getTime() > misfireTime) {
+            //     return false;
+            // } 
 
             doUpdateOfMisfiredTrigger(conn, trig, forceState, newStateIfNotComplete, false);
 
