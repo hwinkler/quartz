@@ -4,7 +4,7 @@
 
   <groupId>org.quartz-scheduler</groupId>
   <artifactId>quartz-parent</artifactId>
-  <version>2.2.3</version>
+  <version>2.2.3-DI</version>
   <name>quartz-parent</name>
   <packaging>pom</packaging>
   
@@ -74,7 +74,7 @@
     <checkstyle-suppressions-file>suppressions.xml</checkstyle-suppressions-file>
     <checkstyle-config-file>checkstyle.xml</checkstyle-config-file>
     <checkstyle-header-file>header.txt</checkstyle-header-file>
-
+    <additionalparam>-Xdoclint:none</additionalparam>
     <terracotta-snapshots-url>http://nexus.terracotta.eur.ad.sag/content/repositories/terracotta-snapshots</terracotta-snapshots-url>
     <terracotta-staging-url>http://nexus.terracotta.eur.ad.sag/content/repositories/terracotta-staging</terracotta-staging-url>
     <terracotta-releases-url>http://nexus.terracotta.eur.ad.sag/content/repositories/terracotta-releases</terracotta-releases-url>    
